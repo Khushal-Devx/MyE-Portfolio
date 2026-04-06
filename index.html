@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khushal Sharma – E-Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blue: #0a0f1e;
+      --blue-mid: #111827;
+      --blue-light: #1a2235;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59,130,246,0.18);
+      --accent-dim: rgba(59,130,246,0.35);
+      --white: #f0f4ff;
+      --off-white: #111827;
+      --text: #e8edf8;
+      --text-muted: #8b96b0;
+      --silver: #4a5568;
+      --card-bg: #161d2e;
+      --border: rgba(59,130,246,0.15);
+      --section-gap: 0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--blue);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(16, 28, 61, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: whitesmoke;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 72px;
+      background: var(--blue);
+      overflow: hidden;
+      position: relative;
+    }
+    #home::before {
+      content: '';
+      position: absolute;
+      top: 10%; right: 0;
+      width: 55%; height: 80%;
+      background: radial-gradient(ellipse at center, rgba(59,130,246,0.1) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-photo-col {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+    .hero-photo-col img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: brightness(0.85) contrast(1.05);
+    }
+    .hero-photo-col::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 55%, var(--blue) 100%),
+                  linear-gradient(to top, rgba(10,15,30,0.6) 0%, transparent 40%);
+    }
+    .hero-photo-label {
+      position: absolute;
+      bottom: 40px; left: 28px;
+      z-index: 2;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    .hero-text-col {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 48px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+    .hero-eyebrow-line { width: 28px; height: 1px; background: var(--accent); }
+    .hero-eyebrow-text {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .hero-text-col h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 3.8vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.08;
+      margin-bottom: 4px;
+    }
+    .hero-text-col h1 .name-accent {
+      color: var(--accent);
+      display: block;
+    }
+    .hero-role-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 18px 0 24px;
+      flex-wrap: wrap;
+    }
+    .hero-role-line span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .hero-role-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .hero-bio {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      max-width: 400px;
+      margin-bottom: 36px;
+      border-left: 2px solid rgba(59,130,246,0.4);
+      padding-left: 16px;
+    }
+    .hero-portfolio-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 40px;
+      margin-bottom: 32px;
+      width: fit-content;
+    }
+    .hero-portfolio-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.6); }
+    }
+    .hero-cta-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0f1e;
+      padding: 12px 28px;
+      border-radius: 3px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 12px 28px;
+      border-radius: 3px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(59,130,246,0.2);
+      transition: border-color .2s, color .2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 28px; right: 56px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .hero-scroll-arrow {
+      width: 16px; height: 16px;
+      border-right: 1.5px solid var(--text-muted);
+      border-bottom: 1.5px solid var(--text-muted);
+      transform: rotate(45deg);
+      animation: bounceDown 1.8s infinite;
+    }
+    @keyframes bounceDown {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 60px; }
+
+    img { background: var(--blue-light); display: block; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .section-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 36px;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--blue-mid); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-image {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .about-image img {
+      width: 100%;
+      height: 420px;
+      min-height: 280px;
+      object-fit:cover;
+      display: block;
+    }
+    .about-image-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(10,15,30,0.85);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      padding: 10px 16px;
+    }
+    .about-text p {
+      font-size: 0.96rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--blue); }
+    #education .section-title { color: var(--white); }
+    #education .section-label { color: var(--accent); }
+    #education .section-divider { background: var(--accent); }
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .edu-item {
+      background: var(--blue);
+      padding: 40px 36px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: background .2s;
+    }
+    .edu-item:hover { background: var(--blue-mid); }
+    .edu-icon {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .edu-school {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .edu-year {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--accent);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--blue-mid); }
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .skills-col h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .skill-bar-item { margin-bottom: 22px; }
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .skill-bar-track {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      animation: fillBar 1.4s ease forwards;
+      transform-origin: left;
+    }
+    @keyframes fillBar { from { width: 0; } }
+
+    .soft-skill-tag {
+      display: inline-block;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.2);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: 2px;
+      margin: 4px 4px 4px 0;
+      transition: background .2s, color .2s;
+    }
+    .soft-skill-tag:hover { background: rgba(59,130,246,0.18); color: var(--accent); }
+
+    /* ── CERT CARDS ── */
+    .cert-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--blue-light);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+    .cert-left { display: flex; align-items: center; gap: 14px; }
+    .cert-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .cert-name { font-weight: 600; font-size: 0.9rem; color: var(--white); }
+    .cert-sub { font-size: 0.78rem; color: var(--text-muted); }
+    .cert-view-btn {
+      flex-shrink: 0;
+      background: var(--accent);
+      color: #0a0f1e;
+      border: none;
+      padding: 7px 14px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: opacity .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .cert-view-btn:hover { opacity: 0.85; }
+
+    /* Certificate modal overlay */
+    .cert-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+    }
+    .cert-modal-overlay.open { display: flex; }
+    .cert-modal {
+      background: var(--blue-mid);
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 580px;
+      width: 90%;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      animation: modalIn .25s ease;
+    }
+    @keyframes modalIn {
+      from { opacity:0; transform: scale(0.93) translateY(16px); }
+      to   { opacity:1; transform: scale(1) translateY(0); }
+    }
+    .cert-modal-header {
+      background: var(--blue-light);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cert-modal-title { color: var(--white); font-weight: 700; font-size: 1rem; }
+    .cert-modal-close {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .cert-modal-close:hover { background: rgba(255,255,255,0.3); }
+    .cert-modal-img {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      display: block;
+      background: var(--blue-light);
+    }
+    .cert-modal-footer {
+      padding: 16px 24px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background: var(--blue-light);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── EXPERIENCE JOURNEY ── */
+    #experience { background: var(--blue); padding: 100px 60px; }
+    #experience .section-label { color: var(--accent); }
+    #experience .section-title { color: var(--white); }
+
+    .journey-timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Central vertical line */
+    .journey-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--blue-light), var(--blue), var(--blue-light));
+      border-radius: 2px;
+      z-index: 0;
+    }
+
+    /* Each row: image on one side, card on the other */
+    .journey-row {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      align-items: center;
+      margin-bottom: 70px;
+      position: relative;
+      gap: 0;
+    }
+    .journey-row:last-child { margin-bottom: 0; }
+
+    /* The centre column holds the dot + year pill */
+    .journey-centre {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      gap: 8px;
+    }
+    .journey-dot {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 3px solid white;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px var(--blue);
+    }
+    .journey-dot.student { background: var(--silver); box-shadow: 0 0 0 3px var(--silver); }
+    .journey-dot.work    { background: var(--blue-mid); box-shadow: 0 0 0 3px var(--blue-mid); }
+    .journey-dot.present { background: #4a7c6f; box-shadow: 0 0 0 3px #4a7c6f; }
+
+    .journey-year-pill {
+      background: var(--blue);
+      color: white;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      padding: 3px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    /* Horizontal connector lines from dot to card/image */
+    .journey-centre::before,
+    .journey-centre::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      height: 2px;
+      background: rgba(59,130,246,0.25);
+      width: 28px;
+    }
+    .journey-centre::before { right: 100%; }
+    .journey-centre::after  { left: 100%; }
+
+    /* Card styling */
+    .journey-card {
+      background: var(--blue-light);
+      border-radius: 8px;
+      padding: 24px 26px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .journey-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.4);
+      border-color: var(--accent);
+    }
+    .journey-card.green-border { border-color: rgba(59,130,246,0.35); }
+
+    /* Image panel beside the card */
+    .journey-img-panel {
+      border-radius: 10px;
+      overflow: hidden;
+      height: 220px;
+      box-shadow: 0 4px 20px rgba(26,58,110,0.1);
+      background: var(--blue-light);
+    }
+    .journey-img-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Left card = card left, image right */
+    .journey-row .journey-card { margin-right: 0; }
+    /* Right card = image left, card right */
+    .journey-row.card-right .journey-img-panel { grid-column: 1; grid-row: 1; }
+    .journey-row.card-right .journey-card { grid-column: 3; grid-row: 1; }
+
+    .journey-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+    .badge-student { background: rgba(59,130,246,0.1); color: var(--accent); border: 1px solid rgba(59,130,246,0.25); }
+    .badge-work    { background: rgba(59,130,246,0.1); color: var(--accent); border: 1px solid rgba(59,130,246,0.25); }
+    .badge-present { background: rgba(74,124,111,0.15); color: #7dd3c0; border: 1px solid rgba(74,124,111,0.3); }
+
+    .journey-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+    .journey-card-org {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .journey-card-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* Phase divider */
+    .journey-phase-divider {
+      text-align: center;
+      position: relative;
+      margin: 44px 0;
+      z-index: 2;
+    }
+    .journey-phase-divider span {
+      display: inline-block;
+      background: var(--blue);
+      padding: 0 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 900px) {
+      .journey-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .journey-centre { flex-direction: row; padding: 8px 0; }
+      .journey-centre::before, .journey-centre::after { display: none; }
+      .journey-img-panel { height: 180px; }
+      .journey-timeline::before { display: none; }
+    }
+
+    /* ── PROJECT HIGHLIGHT ── */
+    #projects { background: var(--blue-mid); }
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--blue-light);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+    }
+    .project-media {
+      position: relative;
+      min-height: 360px;
+      background: var(--blue);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .project-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+    .project-media-overlay {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: white; text-align: center; padding: 30px;
+    }
+    .project-media-icon { font-size: 3rem; margin-bottom: 12px; }
+    .project-media-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700;
+    }
+    .project-info { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+    .prize-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(59,130,246,0.12);
+      color: var(--accent);
+      font-size: 0.78rem; font-weight: 700;
+      padding: 7px 16px; letter-spacing: 0.06em;
+      margin-bottom: 24px; width: fit-content;
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 3px;
+    }
+    .project-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--white); margin-bottom: 16px;
+    }
+    .project-info p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 14px; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tech-tag {
+      background: rgba(59,130,246,0.1);
+      color: var(--accent);
+      font-size: 0.75rem; font-weight: 600;
+      padding: 5px 12px; border-radius: 2px;
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+
+    /* ── EDUCATION TIMELINE ── */
+    #education { background: var(--blue); padding: 100px 60px; }
+    #education .section-title { color: var(--white); }
+    #education .section-label { color: var(--accent); }
+    #education .section-divider { background: var(--accent); }
+
+    .edu-timeline {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .edu-timeline::before {
+      content: '';
+      position: absolute;
+      left: 38px;
+      top: 0; bottom: 0;
+      width: 3px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+    }
+
+    .edu-step {
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+      margin-bottom: 56px;
+      position: relative;
+    }
+    .edu-step:last-child { margin-bottom: 0; }
+
+    .edu-step-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 78px;
+    }
+    .edu-step-number {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: white;
+      color: var(--blue);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+    .edu-step-connector {
+      width: 2px;
+      flex: 1;
+      min-height: 40px;
+      background: rgba(255,255,255,0.15);
+      margin-top: 8px;
+    }
+
+    .edu-step-card {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 28px 32px;
+      transition: background .2s, border-color .2s;
+    }
+    .edu-step-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(59,130,246,0.5);
+    }
+
+    .edu-step-year {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .edu-step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .edu-step-school {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 16px;
+    }
+    .edu-step-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    /* Hover popup trigger buttons */
+    .edu-popup-triggers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .popup-trigger {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .popup-trigger:hover {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border-color: rgba(255,255,255,0.4);
+    }
+    .popup-trigger .pt-icon { font-size: 1rem; }
+
+    /* Floating hover popup */
+    .edu-hover-popup {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 14px);
+      left: 0;
+      width: 320px;
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      z-index: 9999;
+      overflow: hidden;
+      animation: popIn .2s ease;
+    }
+    @keyframes popIn {
+      from { opacity:0; transform: translateY(8px) scale(0.97); }
+      to   { opacity:1; transform: translateY(0) scale(1); }
+    }
+    .popup-trigger:hover .edu-hover-popup { display: block; }
+
+    .popup-header {
+      background: var(--blue);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .popup-header-icon { font-size: 1.2rem; }
+    .popup-header-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .popup-header-sub {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .popup-img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: #eee;
+    }
+    .popup-img-grid img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      display: block;
+    }
+    .popup-img-single img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    /* Portrait popup — taller, single image, no footer */
+    .popup-img-portrait img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    /* Awards grid — just images, no footer */
+    .popup-img-awards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: #eee;
+    }
+    .popup-img-awards img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .popup-footer {
+      padding: 12px 18px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--blue-light);
+      border-top: 1px solid var(--border);
+      line-height: 1.6;
+    }
+
+    /* ── AWARDS ── */
+    #awards { background: var(--blue-mid); }
+
+    /* Single-flow layout */
+    .awards-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Individual award/honor entry */
+    .award-entry {
+      background: var(--blue-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .award-entry:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(59,130,246,0.12);
+    }
+
+    .award-entry-header {
+      padding: 20px 22px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .award-entry-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .award-entry-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .award-entry-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .award-entry-badge {
+      display: inline-block;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.25);
+      color: var(--accent);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 2px;
+      margin-bottom: 6px;
+    }
+
+    /* 4-photo collage grid — compact landscape cells */
+    .award-collage-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid var(--border);
+    }
+    .award-collage-4 > * {
+      aspect-ratio: 4 / 3;
+      width: 100%;
+    }
+    .award-collage-4 img {
+      width: 100%;
+      height: 100%;
+      object-fit:cover;
+      display: block;
+      transition: filter .3s;
+    }
+    .award-entry:hover .award-collage-4 img { filter: brightness(1.1); }
+
+    /* Single image — compact landscape */
+    .award-single-img {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      object-fit: cover;
+      display: block;
+      border-top: 1px solid var(--border);
+      transition: filter .3s;
+    }
+    .award-entry:hover .award-single-img { filter: brightness(1.08); }
+
+    /* Video + image combo — compact landscape cells */
+    .award-media-combo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid var(--border);
+    }
+    .award-media-combo > * {
+      aspect-ratio: 4 / 3;
+      width: 100%;
+    }
+    .award-media-combo video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #0a0f1e;
+    }
+    .award-media-combo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .award-collage-4 { height: 180px; }
+    }
+
+    /* ── HOBBIES ── */
+    #hobbies { background: var(--blue); }
+    .hobbies-scroll-wrapper {
+      overflow-x: auto;
+      overflow-y: visible;
+      padding-bottom: 16px;
+      cursor: grab;
+      user-select: none;
+      /* hide scrollbar visually but keep it functional */
+      scrollbar-width: none;
+    }
+    .hobbies-scroll-wrapper::-webkit-scrollbar { display: none; }
+    .hobbies-scroll-wrapper.grabbing { cursor: grabbing; }
+    .hobbies-track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      padding: 8px 4px 8px;
+    }
+    .hobby-card {
+      background: var(--blue-light);
+      border: 1px solid var(--border);
+      padding: 28px 18px;
+      border-radius: 6px;
+      text-align: center;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      flex-shrink: 0;
+      width: 110px;
+    }
+    .hobby-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(59,130,246,0.15);
+    }
+    .hobby-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .hobby-label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.4; }
+
+    /* ── LANGUAGES ── */
+    #languages { background: var(--blue-mid); }
+    .lang-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .lang-card {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--blue-light);
+      border: 1px solid var(--border);
+      padding: 20px 22px;
+      border-radius: 6px;
+      transition: border-color .2s;
+    }
+    .lang-card:hover { border-color: var(--accent); }
+    .lang-flag { font-size: 2rem; }
+    .lang-name { font-weight: 600; font-size: 0.95rem; color: var(--white); }
+    .lang-level { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* ── VIDEO SECTION ── */
+    #media { background: var(--blue); padding: 100px 60px; }
+    #media .section-title { color: white; }
+    #media .section-label { color: var(--accent); }
+    #media .section-divider { background: var(--accent); }
+    .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .video-wrapper {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .video-wrapper iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+      display: block;
+    }
+    .video-caption {
+      padding: 16px 20px;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.7);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--blue-mid);
+      text-align: center;
+      padding: 100px 60px;
+    }
+    #contact .section-label { color: var(--accent); }
+    #contact .section-title { color: var(--white); }
+    #contact .section-divider { background: var(--accent); margin: 0 auto 20px; }
+
+    .contact-tagline {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 440px;
+      margin: 0 auto 52px;
+      line-height: 1.8;
+    }
+
+    .contact-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--blue-light);
+      border: 1px solid var(--border);
+      padding: 18px 26px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: border-color .2s, transform .2s, background .2s;
+      min-width: 200px;
+    }
+    .contact-card:hover {
+      border-color: var(--accent);
+      background: rgba(59,130,246,0.08);
+      transform: translateY(-2px);
+    }
+    .contact-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .contact-card-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+    .contact-card-value {
+      font-size: 0.86rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .contact-card.highlight {
+      border-color: rgba(59,130,246,0.4);
+      background: rgba(59,130,246,0.1);
+    }
+    .contact-card.highlight .contact-card-value { color: var(--accent); }
+    /* ── FOOTER ── */
+    footer {
+      background: var(--blue-mid);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 28px 60px;
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+    footer span { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.hidden { opacity: 0; transform: translateY(28px); }
+    .fade-in.visible { opacity: 1 !important; transform: translateY(0) !important; }
+
+    /* ── IRELAND INTERNATIONAL EXPERIENCE ── */
+    .ireland-exp-wrapper {
+      margin-top: 72px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .ireland-exp-header {
+      margin-bottom: 36px;
+    }
+
+    .ireland-exp-flag-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .ireland-flag-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .ireland-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 40px;
+    }
+
+    .ireland-exp-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .ireland-exp-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      max-width: 640px;
+      border-left: 2px solid rgba(59,130,246,0.4);
+      padding-left: 16px;
+    }
+
+    /* Stats row */
+    .ireland-stats-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .ireland-stat {
+      flex: 1;
+      text-align: center;
+      padding: 20px 16px;
+    }
+
+    .ireland-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .ireland-stat-label {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 500;
+    }
+
+    .ireland-stat-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* COLLAGE GRID */
+    .ireland-collage {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .ireland-col-hero {
+      grid-column: 1;
+      grid-row: 1;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      height: auto;
+    }
+
+    .ireland-col-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .ireland-col-hero:hover img { transform: scale(1.04); }
+
+    .ireland-col-stack {
+      grid-column: 2;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .ireland-col-stack .ireland-col-item {
+      aspect-ratio: 1 / 1;
+      height: auto;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ireland-col-trio {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .ireland-col-trio .ireland-col-item {
+      aspect-ratio: 3 / 4;
+      height: auto;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ireland-col-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .ireland-col-item:hover img { transform: scale(1.05); }
+
+    /* Caption overlay on hover */
+    .ireland-col-caption,
+    .ireland-col-hero .ireland-col-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(10,15,30,0.88) 0%, transparent 100%);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 18px 12px 10px;
+      transform: translateY(100%);
+      transition: transform .3s ease;
+      text-align: center;
+    }
+
+    .ireland-col-hero:hover .ireland-col-caption,
+    .ireland-col-item:hover .ireland-col-caption { transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 0.75rem; }
+      section { padding: 70px 24px; }
+      #home {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-photo-col { min-height: 55vw; max-height: 420px; }
+      .hero-text-col { padding: 50px 28px; }
+      .hero-text-col h1 { font-size: 2.2rem; }
+      .hero-scroll-hint { display: none; }
+      .about-grid,
+      .skills-layout,
+      .project-card,
+      .video-grid { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .awards-grid { grid-template-columns: 1fr 1fr; }
+      .hobbies-scroll-wrapper { padding-bottom: 12px; }
+      .lang-grid { grid-template-columns: repeat(2, 1fr); }
+      .ireland-collage { grid-template-columns: 1fr; }
+      .ireland-col-hero { grid-column: 1; grid-row: auto; height: 220px; }
+      .ireland-col-stack { grid-column: 1; grid-row: auto; flex-direction: row; }
+      .ireland-col-stack .ireland-col-item { height: 130px; flex: 1; }
+      .ireland-col-trio { grid-template-columns: 1fr 1fr; }
+      .ireland-stats-row { flex-direction: column; }
+      .ireland-stat-divider { width: 60px; height: 1px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">K. Sharma</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+
+  <!-- LEFT: Photo -->
+  <div class="hero-photo-col">
+    <img src="/images/me2.jpeg" alt="Khushal Sharma" />
+    <div class="hero-photo-label">Khushal Sharma · Portfolio 2026</div>
+  </div>
+
+  <!-- RIGHT: Text -->
+  <div class="hero-text-col">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">Personal E-Portfolio</span>
+    </div>
+
+    <h1>
+      Hello, I'm
+      <span class="name-accent">Khushal Sharma.</span>
+    </h1>
+
+    <div class="hero-role-line">
+      <span>BSc Computing</span>
+      <div class="hero-role-dot"></div>
+      <span>Dublin Business School</span>
+      <div class="hero-role-dot"></div>
+      <span>Class of 2026</span>
+    </div>
+
+    <div class="hero-portfolio-badge">
+      ✦ Open to Internships
+    </div>
+
+    <p class="hero-bio">
+      Full-time computing student with a passion for building modern web applications and exploring AI tools. Originally from New Delhi, India — now studying and growing in Dublin, Ireland.
+    </p>
+
+    <div class="hero-cta-row">
+      <a href="#about" class="btn-primary">Explore Portfolio</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="hero-scroll-arrow"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="fade-in">
+    <p class="section-label">Who I Am</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="about-grid fade-in">
+    <div class="about-image">
+      <img src="/images/me3.jpg"
+           alt="Dublin Business School" />
+      
+    </div>
+    <div class="about-text">
+      <p>
+        I am originally from New Delhi, India, and I have always been fascinated by computers
+        and technology. From an early age, I was curious about how computers work — programming
+        languages, hardware systems, and the science behind technology.
+      </p>
+      <p>
+        I consider myself a curious and analytical person who enjoys understanding the logic
+        behind things. I like to explore problems deeply and think creatively to find solutions.
+        One of my key strengths is my ability to remain calm in stressful situations —
+        I focus on identifying solutions first rather than worrying about the problem.
+      </p>
+      <p>
+        I strongly believe in continuous self-improvement and often describe myself as a
+        <em>"jack of all trades"</em> — someone who enjoys exploring different areas and
+        becoming capable in many fields.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION TIMELINE -->
+<section id="education">
+  <div class="fade-in">
+    <p class="section-label">Academic Background</p>
+    <h2 class="section-title">Education</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="edu-timeline fade-in">
+
+    <!-- STEP 1 — 10th Standard 2022 -->
+    <div class="edu-step">
+      <div class="edu-step-left">
+        <div class="edu-step-number">1</div>
+        <div class="edu-step-connector"></div>
+      </div>
+      <div class="edu-step-card">
+        <span class="edu-step-year">Graduated 2022</span>
+        <div class="edu-step-title">10th Standard (India) – Equivalent to Junior Cycle (Ireland)</div>
+        <div class="edu-step-school">Adarsh Public School, New Delhi, India</div>
+        <div class="edu-step-desc">
+          Completed my 10th standard with a focus on Mathematics, Science, and Computer Science.
+          Developed strong logical thinking and analytical skills. Active in sports and extracurricular activities.
+        </div>
+        <div class="edu-popup-triggers">
+
+          <!-- Certificates popup -->
+          <div class="popup-trigger">
+            <span class="pt-icon">📜</span> Certificate
+            <div class="edu-hover-popup">
+              <div class="popup-header">
+                <span class="popup-header-icon">📜</span>
+                <div>
+                  <div class="popup-header-title">10th Certificates</div>
+                  <div class="popup-header-sub">Academic credentials</div>
+                </div>
+              </div>
+              <div class="popup-img-portrait">
+                <img src="/images/10th_RC_KHUSHAL-page-00001.jpg" alt="Certificate" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 — 12th Standard 2024 -->
+    <div class="edu-step">
+      <div class="edu-step-left">
+        <div class="edu-step-number">2</div>
+        <div class="edu-step-connector"></div>
+      </div>
+      <div class="edu-step-card">
+        <span class="edu-step-year">Graduated 2024</span>
+        <div class="edu-step-title">12th Standard (India) – Equivalent to Leaving Certificate (Ireland)</div>
+        <div class="edu-step-school">Adarsh Public School, New Delhi, India</div>
+        <div class="edu-step-desc">
+          Completed 12th standard in the Science stream with Mathematics, Chemistry, and Computer Science
+          as core subjects. Represented school at state-level science fair. Won First Prize for the
+          gesture-controlled car project and respresented as the School House Captain for the whole year.
+        </div>
+        <div class="edu-popup-triggers">
+
+          <!-- Awards popup -->
+          <div class="popup-trigger">
+            <span class="pt-icon">🏆</span> Awards & Achievements
+            <div class="edu-hover-popup">
+              <div class="popup-header">
+                <span class="popup-header-icon">🏆</span>
+                <div>
+                  <div class="popup-header-title">12th Grade Awards</div>
+                  <div class="popup-header-sub">Hover to view highlights</div>
+                </div>
+              </div>
+              <div class="popup-img-awards">
+                <img src="/images/Science Exhibition Centre level-page-00001.jpg" alt="Science Fair 1st Prize" />
+                <img src="images/House Captain Certificate -page-00001.jpg" alt="School House Captain" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificates popup -->
+          <div class="popup-trigger">
+            <span class="pt-icon">📜</span> Certificate
+            <div class="edu-hover-popup">
+              <div class="popup-header">
+                <span class="popup-header-icon">📜</span>
+                <div>
+                  <div class="popup-header-title">12th &amp; Professional Certificates</div>
+                  <div class="popup-header-sub">Academic &amp; extra credentials</div>
+                </div>
+              </div>
+              <div class="popup-img-portrait">
+                <img src="/images/12th_RC_KHUSHAL-page-00001.jpg" alt="12th Certificate" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 — BSc Computing 2026 -->
+    <div class="edu-step">
+      <div class="edu-step-left">
+        <div class="edu-step-number">3</div>
+      </div>
+      <div class="edu-step-card">
+        <span class="edu-step-year">2026 – Present</span>
+        <div class="edu-step-title">BSc (Hons) in Computing</div>
+        <div class="edu-step-school">Dublin Business School, Ireland</div>
+        <div class="edu-step-desc">
+          Currently pursuing a Bachelor of Science (Hons) in Computing, focusing on logic, mathematics, information systems, computer architecture, web development, cloud computing, and programming fundamentals. Developing strong analytical and technical skills with the aim of pursuing a career as a Data Analyst.
+        </div>
+        <div class="edu-popup-triggers">
+
+          <!-- Class Rep Achievement popup -->
+          <div class="popup-trigger">
+            <span class="pt-icon">🎓</span> Achievements
+            <div class="edu-hover-popup">
+              <div class="popup-header">
+                <span class="popup-header-icon">🎓</span>
+                <div>
+                  <div class="popup-header-title">BSc Achievements</div>
+                  <div class="popup-header-sub">Dublin Business School</div>
+                </div>
+              </div>
+              <div class="popup-img-portrait">
+                <img src="images/Class_Rep.png" alt="Class Representative" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="fade-in">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="skills-layout fade-in">
+    <div class="skills-col">
+      <h3>Technical Skills</h3>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Python Programming</span><span>60%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>HTML</span><span>90%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>CSS</span><span>60%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>JavaScript</span><span>55%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>SQL</span><span>60%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Arduino / Hardware</span><span>55%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div>
+      </div>
+
+      <h3 style="margin-top:40px;">Certifications</h3>
+      <div class="cert-card">
+        <div class="cert-left">
+          <div class="cert-icon">📊</div>
+          <div>
+            <div class="cert-name">Data Analyst Certificate</div>
+            <div class="cert-sub">Data analysis concepts and tools</div>
+          </div>
+        </div>
+        <button class="cert-view-btn" onclick="openCert('cert1')">View</button>
+      </div>
+      <div class="cert-card">
+        <div class="cert-left">
+          <div class="cert-icon">🐍</div>
+          <div>
+            <div class="cert-name">Python Programming Certificate</div>
+            <div class="cert-sub">Programming fundamentals and applications</div>
+          </div>
+        </div>
+        <button class="cert-view-btn" onclick="openCert('cert2')">View</button>
+      </div>
+    </div>
+
+    <div class="skills-col">
+      <h3>Soft Skills</h3>
+      <span class="soft-skill-tag">🧭 Leadership</span>
+      <span class="soft-skill-tag">🔍 Problem-Solving</span>
+      <span class="soft-skill-tag">💡 Critical Thinking</span>
+      <span class="soft-skill-tag">⚡ Decision-Making Under Pressure</span>
+      <span class="soft-skill-tag">🤝 Communication</span>
+      <span class="soft-skill-tag">🌍 Cultural Adaptability</span>
+      <span class="soft-skill-tag">📈 Continuous Learning</span>
+      <span class="soft-skill-tag">🏆 Team Captaincy</span>
+
+      <h3 style="margin-top:40px;">Career Goal</h3>
+      <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.8;margin-top:8px;">
+        My goal is to become a <strong>Data Analyst</strong> at an innovative global company
+        such as Google, Amazon, or Netflix — where data plays a crucial role in decision-making
+        and technological advancement.<br/><br/>
+        In the next five years: complete my degree, gain internship experience,
+        and deepen my technical expertise.
+      </p>
+
+      <h3 style="margin-top:40px;">Also Passionate About</h3>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:12px;">
+        <div style="background:var(--blue-light);border-left:3px solid var(--blue-mid);padding:14px 18px;border-radius:0 4px 4px 0;">
+          <div style="font-weight:600;font-size:0.88rem;color:white;margin-bottom:4px;">🌐 Building Websites</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;">Passionate about designing and building clean, functional websites from scratch using HTML, CSS and JavaScript. This portfolio is a live example.</div>
+        </div>
+        <div style="background:var(--blue-light);border-left:3px solid var(--silver);padding:14px 18px;border-radius:0 4px 4px 0;">
+          <div style="font-weight:600;font-size:0.88rem;color:white;margin-bottom:4px;">🤖 AI Tools — Effective &amp; Efficient</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;">Proficient in leveraging AI tools such as ChatGPT, Claude, and Copilot to boost productivity, accelerate learning, and solve real-world problems faster.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE JOURNEY -->
+<section id="experience">
+  <div class="fade-in">
+    <p class="section-label">My Journey</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-divider"></div>
+    <p style="font-size:0.92rem;color:var(--text-muted);max-width:560px;line-height:1.8;margin-bottom:56px;">
+      From student life in New Delhi to full-time work in the corporate world — and back to pursuing higher education in Ireland. Here is the story of my journey.
+    </p>
+  </div>
+
+  <div class="journey-timeline fade-in">
+
+    <!-- ── PHASE 1 ── -->
+    <div class="journey-phase-divider"><span>📚 Student Life — India</span></div>
+
+    <!-- ROW 1: card LEFT · image RIGHT -->
+    <div class="journey-row">
+      <div class="journey-card">
+        <span class="journey-type-badge badge-student">🎒 Student</span>
+        <div class="journey-card-title">Student Life</div>
+        <div class="journey-card-org">Adarsh Public School · New Delhi, India</div>
+        <div class="journey-card-desc">
+          Grew up fascinated by computers, science, and technology. Studied Mathematics, Chemistry, and Computer Science. Actively participated in sports, leadership roles, and extracurricular activities — building a strong foundation for everything that followed.
+        </div>
+      </div>
+      <div class="journey-centre">
+        <div class="journey-dot student"></div>
+        <div class="journey-year-pill">2010 – 2024</div>
+      </div>
+      <div class="journey-img-panel">
+        <img src="images/school_group_pic1.jpeg" alt="Student Life" />
+      </div>
+    </div>
+
+    <!-- ── PHASE 2 ── -->
+    <div class="journey-phase-divider"><span>💼 Corporate Work — Full Time</span></div>
+
+    <!-- ROW 2: image LEFT · card RIGHT (card-right class) -->
+    <div class="journey-row card-right">
+      <div class="journey-img-panel">
+        <img src="images/ford-serviceimg.webp" alt="Ford Service Advisor" />
+      </div>
+      <div class="journey-centre">
+        <div class="journey-dot work"></div>
+        <div class="journey-year-pill">2024 – 2025</div>
+      </div>
+      <div class="journey-card">
+        <span class="journey-type-badge badge-work">💼 Work</span>
+        <div class="journey-card-title">Service Advisor</div>
+        <div class="journey-card-org">Ford Dealership · New Delhi, India</div>
+        <div class="journey-card-desc">
+          After completing school, stepped into the corporate world full-time. Advised customers on vehicle servicing and maintenance, applied technical knowledge of automobile mechanics, and developed strong communication and customer-service skills in a fast-paced environment.
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3: card LEFT · image RIGHT -->
+    <div class="journey-row">
+      <div class="journey-card">
+        <span class="journey-type-badge badge-work">💼 Work</span>
+        <div class="journey-card-title">Sales Associate</div>
+        <div class="journey-card-org">Aakash Institute · New Delhi, India</div>
+        <div class="journey-card-desc">
+          Worked at one of India's leading exam-preparation institutes (NEET &amp; JEE). Assisted prospective students and parents with course information and enrollment decisions. Honed persuasion, communication, and problem-solving skills in a high-volume consultative sales role.
+        </div>
+      </div>
+      <div class="journey-centre">
+        <div class="journey-dot work"></div>
+        <div class="journey-year-pill">2025 – 2026</div>
+      </div>
+      <div class="journey-img-panel">
+        <img src="images/aakash_img.jpeg" alt="Aakash Institute" />
+      </div>
+    </div>
+
+    <!-- ── PHASE 3 ── -->
+    <div class="journey-phase-divider"><span>🌍 Higher Education — Ireland</span></div>
+
+    <!-- ROW 4: image LEFT · card RIGHT -->
+    <div class="journey-row card-right">
+      <div class="journey-img-panel">
+        <img src="images/DBS_image.jpg" alt="Dublin Business School" />
+      </div>
+      <div class="journey-centre">
+        <div class="journey-dot present"></div>
+        <div class="journey-year-pill">2026 – Now</div>
+      </div>
+      <div class="journey-card green-border">
+        <span class="journey-type-badge badge-present">🎓 Present</span>
+        <div class="journey-card-title">BSc (Hons) in Computing</div>
+        <div class="journey-card-org">Dublin Business School · Ireland · 2026 – Present</div>
+        <div class="journey-card-desc">
+          After gaining real-world work experience, made the bold decision to pursue higher education abroad. Now studying Computer Science in Dublin — combining academic knowledge with professional experience to build a career as a Data Analyst at a global company.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── IRELAND INTERNATIONAL EXPERIENCE ── -->
+  <div class="ireland-exp-wrapper fade-in">
+
+    <div class="ireland-exp-header">
+      <div class="ireland-exp-flag-row">
+        <span class="ireland-flag-icon">🇮🇪</span>
+        <div class="ireland-header-badge">International Experience</div>
+      </div>
+      <h3 class="ireland-exp-title">Life in Ireland</h3>
+      <p class="ireland-exp-subtitle">
+        Moving from New Delhi to Dublin was more than a change of address — it was a transformation.
+        Immersing myself in a new culture, building connections, and experiencing Ireland's vibrant
+        spirit has shaped me as both a student and a person.
+      </p>
+    </div>
+
+    
+    <!-- PHOTO COLLAGE -->
+    <div class="ireland-collage">
+
+      <!-- Large hero image — top left -->
+      <div class="ireland-col-hero">
+        <img src="images/Dublin_ cityscape.jpeg" alt="Dublin cityscape" />
+        <div class="ireland-col-caption">Dublin, Ireland 🇮🇪</div>
+      </div>
+
+      <!-- Two stacked images — top right -->
+      <div class="ireland-col-stack">
+        <div class="ireland-col-item">
+          <img src="images/DBS_campus_reception.webp" alt="DBS Campus" />
+          <div class="ireland-col-caption">Dublin Business School</div>
+        </div>
+        <div class="ireland-col-item">
+          <img src="images/temple bar.jpeg" alt="Life in Ireland" />
+          <div class="ireland-col-caption">Dublin City </div>
+        </div>
+      </div>
+
+      <!-- Three smaller images — bottom row -->
+      <div class="ireland-col-trio">
+        <div class="ireland-col-item">
+          <img src="images/Howth3.jpg" alt="Ireland moments" />
+          <div class="ireland-col-caption">Potrait</div>
+        </div>
+        <div class="ireland-col-item">
+          <img src="images/Howth.jpeg" alt="Ireland landscape" />
+          <div class="ireland-col-caption">Howth Landscape</div>
+        </div>
+        <div class="ireland-col-item">
+          <img src="images/Howth4.jpg" alt="Student life Ireland" />
+          <div class="ireland-col-caption">Irish Landscape</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROJECT HIGHLIGHT -->
+<section id="projects">
+  <div class="fade-in">
+    <p class="section-label">Academic Project</p>
+    <h2 class="section-title">Gesture-Controlled Car</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="project-card fade-in">
+    <div class="project-media">
+      <img src="images/project_img.jpg"
+           alt="Arduino Project" />
+      
+    </div>
+    <div class="project-info">
+      <div class="prize-badge">🥇 First Prize — District &amp; State Level</div>
+      <h3>Automatic Gesture-Controlled Car</h3>
+      <p>
+        An automatic car controlled entirely by hand gestures — built using Arduino boards,
+        various sensors, basic coding, and mechanical components. The project demonstrated
+        how gesture-based control systems can seamlessly interact with machines.
+      </p>
+      <p>
+        This project was presented at the science fair and won First Prize at both the
+        district and state level competitions.
+      </p>
+      <div class="tech-tags">
+        <span class="tech-tag">Arduino</span>
+        <span class="tech-tag">Sensors</span>
+        <span class="tech-tag">C/C++</span>
+        <span class="tech-tag">Gesture Control</span>
+        <span class="tech-tag">Mechanical Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="fade-in">
+    <p class="section-label">Recognitions</p>
+    <h2 class="section-title">Awards &amp; Honors</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="awards-flow fade-in">
+
+    <!-- 1: Science Exhibition – 1st Prize (4-photo collage) -->
+    <div class="award-entry">
+      <div class="award-entry-header">
+        <div class="award-entry-icon">🥇</div>
+        <div class="award-entry-text">
+          <div class="award-entry-badge">Zonal &amp; State Level</div>
+          <div class="award-entry-title">1st Prize – Science Exhibition</div>
+          <div class="award-entry-desc">First prize for the automatic gesture-controlled car project at both zonal and state level science exhibitions.</div>
+        </div>
+      </div>
+      
+      <div class="award-collage-4">
+        <img src="images/award pic.jpeg" alt="Science Exhibition 1">
+        <img src="images/Science Exhibition Centre level-page-00001.jpg" alt="Science Exhibition 2">
+        <img src="images/First Science Exhibition Zonal level -page-00001.jpg" alt="Science Exhibition 3">
+        <img src="images/award_landscape.jpg" alt="Science Exhibition 4">
+      </div>
+    </div>
+
+<!-- 3: Data Analyst Certificate (1 image) -->
+    <div class="award-entry">
+      <div class="award-entry-header">
+        <div class="award-entry-icon">📊</div>
+        <div class="award-entry-text">
+          <div class="award-entry-badge">Certification</div>
+          <div class="award-entry-title">Data Analyst Certificate</div>
+        </div>
+      </div>
+      <img src="images/Data_Analyst_land.jpg" alt="Data Analyst Certificate" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border-top:1px solid var(--border);">
+    </div>
+
+    <!-- 4: DBS Computing Class Representative (1 image) -->
+    <div class="award-entry">
+      <div class="award-entry-header">
+        <div class="award-entry-icon">🎓</div>
+        <div class="award-entry-text">
+          <div class="award-entry-badge">DBS Honor</div>
+          <div class="award-entry-title">Class Representative – BSc Computing</div>
+          <div class="award-entry-desc">Elected as Class Representative for BSc Computing at Dublin Business School, acting as the key liaison between students and faculty.</div>
+        </div>
+      </div>
+      <img src="images/Class_Rep.png" alt="DBS Class Representative" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border-top:1px solid var(--border);">
+    </div>
+
+    <!-- 5: School Credit Corps Commander (4-photo collage) -->
+    <div class="award-entry">
+      <div class="award-entry-header">
+        <div class="award-entry-icon">🎽</div>
+        <div class="award-entry-text">
+          <div class="award-entry-badge">School Honor</div>
+          <div class="award-entry-title">School Credit Corps Commander</div>
+          <div class="award-entry-desc">Appointed as Commander of the School Credit Corps, demonstrating leadership, discipline and responsibility.</div>
+        </div>
+      </div>
+      <div class="award-collage-4">
+        <img src="images/commander_pic.jpeg" alt="Corps Commander 1">
+        <img src="images/commander_img.jpg" alt="Corps Commander 2">
+        <img src="images/parade.jpg" alt="Corps Commander 3">
+        <img src="images/Commander_new.jpg" alt="Corps Commander 4">
+      </div>
+    </div>
+
+    <!-- 5: School House Captain (video placeholder + 1 image) -->
+    <div class="award-entry">
+      <div class="award-entry-header">
+        <div class="award-entry-icon">🏠</div>
+        <div class="award-entry-text">
+          <div class="award-entry-badge">School Honor</div>
+          <div class="award-entry-title">School House Captain</div>
+          <div class="award-entry-desc">Elected as House Captain, leading the school house in inter-house events, sports, and academic activities.</div>
+        </div>
+      </div>
+      <div class="award-media-combo">
+        <!-- Replace src with your own video file e.g. src="captain.mp4" -->
+        <video src="images/house_captain_video.mp4" controls style="width:100%; height:100%; object-fit:cover; display:block; background:#0a0f1e;"></video>
+        <img src="images/school_house.jpg" alt="House Captain">
+      </div>
+    </div>
+
+    <!-- 6: Title of Einstein (4-photo collage) -->
+    <div class="award-entry">
+      <div class="award-entry-header">
+        <div class="award-entry-icon">🧠</div>
+        <div class="award-entry-text">
+          <div class="award-entry-badge">School Title</div>
+          <div class="award-entry-title">Title of "Einstein"</div>
+          <div class="award-entry-desc">Awarded by school for participating in many science competitions and winning the science fair — recognising outstanding scientific achievement.</div>
+        </div>
+      </div>
+      <div class="award-collage-4">
+        <img src="images/title_img.jpg" alt="Einstein Title 1">
+        <img src="images/event1.jpeg" alt="Einstein Title 2">
+        <img src="images/event2.jpg" alt="Einstein Title 3">
+        <img src="images/event3.jpeg" alt="Einstein Title 4">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section id="languages">
+  <div class="fade-in">
+    <p class="section-label">Communication</p>
+    <h2 class="section-title">Language Proficiency</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="lang-grid fade-in">
+    <div class="lang-card">
+      <div class="lang-flag">🇮🇳</div>
+      <div>
+        <div class="lang-name">Hindi</div>
+        <div class="lang-level">Native Proficiency</div>
+      </div>
+    </div>
+    <div class="lang-card">
+      <div class="lang-flag">🇮🇪</div>
+      <div>
+        <div class="lang-name">English</div>
+        <div class="lang-level">Advanced – IELTS Band 7 (C1)</div>
+      </div>
+    </div>
+    <div class="lang-card">
+      <div class="lang-flag">🇩🇪</div>
+      <div>
+        <div class="lang-name">German</div>
+        <div class="lang-level">Beginner – A1 (Currently Learning)</div>
+      </div>
+    </div>
+    <div class="lang-card">
+      <div class="lang-flag">🇮🇳</div>
+      <div>
+        <div class="lang-name">Punjabi</div>
+        <div class="lang-level">Native Proficiency</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies">
+  <div class="fade-in">
+    <p class="section-label">Beyond Academics</p>
+    <h2 class="section-title">Hobbies &amp; Interests</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="hobbies-scroll-wrapper fade-in" id="hobbiesScroll">
+    <div class="hobbies-track">
+      <div class="hobby-card"><div class="hobby-icon">🏐</div><div class="hobby-label">Volleyball</div></div>
+      <div class="hobby-card"><div class="hobby-icon">🏀</div><div class="hobby-label">Basketball</div></div>
+      <div class="hobby-card"><div class="hobby-icon">🏸</div><div class="hobby-label">Badminton</div></div>
+      <div class="hobby-card"><div class="hobby-icon">🏏</div><div class="hobby-label">Cricket</div></div>
+      <div class="hobby-card"><div class="hobby-icon">♟️</div><div class="hobby-label">Chess</div></div>
+      <div class="hobby-card"><div class="hobby-icon">🏊</div><div class="hobby-label">Swimming</div></div>
+      <div class="hobby-card"><div class="hobby-icon">💪</div><div class="hobby-label">Gym &amp; Fitness</div></div>
+      <div class="hobby-card"><div class="hobby-icon">💃</div><div class="hobby-label">Dance</div></div>
+      <div class="hobby-card"><div class="hobby-icon">💻</div><div class="hobby-label">Coding</div></div>
+      <div class="hobby-card"><div class="hobby-icon">➕</div><div class="hobby-label">Maths</div></div>
+      <div class="hobby-card"><div class="hobby-icon">✏️</div><div class="hobby-label">Drawing</div></div>
+      <div class="hobby-card"><div class="hobby-icon">🎨</div><div class="hobby-label">Crafting</div></div>
+      <div class="hobby-card"><div class="hobby-icon">🎤</div><div class="hobby-label">Public Speaking</div></div>
+      <div class="hobby-card"><div class="hobby-icon">🎬</div><div class="hobby-label">Content Videos</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="fade-in">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-divider"></div>
+    <p class="contact-tagline">
+      Open to internships, collaborations, and conversations.<br/>Feel free to reach out.
+    </p>
+  </div>
+  <div class="contact-cards fade-in">
+
+    <a href="mailto:mailkhushal08@gmail.com" class="contact-card">
+      <div class="contact-card-icon">✉️</div>
+      <div>
+        <div class="contact-card-label">Email</div>
+        <div class="contact-card-value"><span class="__cf_email__" data-cfemail="701b18050318111c5e031811021d1130151d11191c5e131f1d"><span class="__cf_email__" data-cfemail="a2cfc3cbcec9cad7d1cac3ce929ae2c5cfc3cbce8cc1cdcf">mailkhushal08@gmail.com</span></span></div>
+      </div>
+    </a>
+
+    <a href="https://github.com/Khushal-Devx" target="_blank" class="contact-card">
+      <div class="contact-card-icon">💻</div>
+      <div>
+        <div class="contact-card-label">GitHub</div>
+        <div class="contact-card-value">github.com/Khushal-Devx</div>
+      </div>
+    </a>
+
+  
+
+  
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Khushal Sharma</span> · BSc Computing, Dublin Business School ·</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Add hidden class first so elements start invisible, then reveal on scroll
+  document.querySelectorAll('.fade-in').forEach(el => el.classList.add('hidden'));
+
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('hidden');
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Active nav link highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current
+        ? '#3b82f6' : '';
+    });
+  });
+
+  // Drag-to-scroll for hobbies
+  const hobbiesScroll = document.getElementById('hobbiesScroll');
+  let isDown = false, startX, scrollLeft;
+  hobbiesScroll.addEventListener('mousedown', e => {
+    isDown = true;
+    hobbiesScroll.classList.add('grabbing');
+    startX = e.pageX - hobbiesScroll.offsetLeft;
+    scrollLeft = hobbiesScroll.scrollLeft;
+  });
+  hobbiesScroll.addEventListener('mouseleave', () => { isDown = false; hobbiesScroll.classList.remove('grabbing'); });
+  hobbiesScroll.addEventListener('mouseup', () => { isDown = false; hobbiesScroll.classList.remove('grabbing'); });
+  hobbiesScroll.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - hobbiesScroll.offsetLeft;
+    hobbiesScroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+  function openCert(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCert(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Close on overlay click
+  document.querySelectorAll('.cert-modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+</script>
+
+<!-- CERTIFICATE MODAL 1 — Data Analyst -->
+<div class="cert-modal-overlay" id="modal-cert1">
+  <div class="cert-modal">
+    <div class="cert-modal-header">
+      <span class="cert-modal-title">📊 Data Analyst Certificate</span>
+      <button class="cert-modal-close" onclick="closeCert('cert1')">✕</button>
+    </div>
+    <img class="cert-modal-img"
+         src="images/Data_Analyst_land.jpg"
+         alt="Data Analyst Certificate" />
+    <div class="cert-modal-footer">
+      📊 Data Analyst Certificate <br/>
+      <em style="color:#aaa;font-size:0.7rem;"></em>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATE MODAL 2 — Python -->
+<div class="cert-modal-overlay" id="modal-cert2">
+  <div class="cert-modal">
+    <div class="cert-modal-header">
+      <span class="cert-modal-title">🐍 Python Pro
